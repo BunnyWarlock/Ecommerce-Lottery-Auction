@@ -1,0 +1,96 @@
+create database ShopDB;
+use ShopDB;
+
+create table lottery(
+    ID int PRIMARY KEY AUTO_INCREMENT,
+    name varchar(100) not null unique,
+    startDate date not null,
+    endDate date not null
+);
+
+create table tiers(
+    tierNo int PRIMARY KEY AUTO_INCREMENT
+);
+
+create table lotteryTiers(
+    lotteryID int,
+    tierNo int,
+    tierProbability int default 0 not null,
+    PRIMARY KEY (lotteryID, tierNo),
+    FOREIGN KEY (lotteryID) REFERENCES lottery(ID) on DELETE CASCADE,
+    FOREIGN KEY (tierNo) REFERENCES tiers(tierNo) on DELETE CASCADE
+);
+
+create table items(
+    ID int PRIMARY KEY AUTO_INCREMENT,
+    name varchar(100) not null unique,
+    price double DEFAULT 0 not null
+);
+
+create table tierPrizes(
+    tierNo int,
+    itemID int,
+    discount int,
+    FOREIGN KEY (itemID) REFERENCES items(ID) on DELETE CASCADE,
+    FOREIGN KEY (tierNo) REFERENCES tiers(tierNo) on DELETE CASCADE
+);
+
+insert into items (name, price) values
+("T-shirt", 10.0),
+("Iphone", 1000),
+("android", 500),
+("Shirt", 40),
+("pencil", 1),
+("pen", 3),
+("vaseline", 5);
+INSERT IGNORE INTO items (name, price) VALUES
+("Jeans", 60),
+("Sneakers", 80),
+("Backpack", 30),
+("Laptop", 1200),
+("Headphones", 50),
+("Watch", 70),
+("Dress", 45),
+("Socks", 5),
+("Hat", 12),
+("Gloves", 8),
+("Umbrella", 15),
+("Running Shoes", 70),
+("Bicycle", 300),
+("Sweater", 40),
+("Sunglasses", 20),
+("Jacket", 60),
+("Scarf", 10),
+("Belt", 15),
+("Laptop Bag", 25),
+("Tie", 18),
+("Shorts", 20),
+("Sandals", 25),
+("Backpack", 35),
+("Wristwatch", 55),
+("Desk Chair", 80),
+("Television", 300),
+("Cookware Set", 70),
+("Desk Lamp", 15),
+("Running Shorts", 25),
+("Smartphone Case", 10),
+("Yoga Mat", 20),
+("Hiking Boots", 60),
+("Digital Camera", 150),
+("Headset", 45),
+("Coffee Maker", 40),
+("Toaster", 20),
+("Blender", 50),
+("Hoodie", 30);
+
+create table auctionItems(
+    ID int PRIMARY KEY AUTO_INCREMENT,
+    name varchar(100) not null unique,
+    bid double DEFAULT 0 not null,
+    description text not null,
+    fileExtension varchar(20) not null,
+    startDate date not null,
+    endDate date not null
+);
+alter table auctionItems
+add bidder varchar(100) DEFAULT "No one made a bid yet" not null;
