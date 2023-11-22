@@ -6,7 +6,7 @@ To Run the project:
   I am using Xampp, so start all the servers there and you are good to go.
   Enjoy
 
-I made this website as part of my team project for a CSE course where our goal was a complete E-commerce Website.
+I made this website as part of my team project for a CSE course where our goal was a complete E-commerce Website. I used the MVC model to create this website.
 
 To use the lottery, you need to create tiers, where u basically specify an item, stored in the database, and assign a discount that the user will get on that item if they win.
 After creating multiple tiers, you can create a lottery by setting up a date and then assigning probabilities/weights to each tier.
