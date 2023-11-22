@@ -18,6 +18,8 @@ Creating an auction is more straightforward. You can add a description, an image
 
 A user can make bids during the live period and the highest bidder will be stored in the database. Since I did not have a user database set up, I just made the user input their name, but you can easily make it so the user ID is stored in the database instead. You can also make it so a log of all bids is stored in a seperate database.
 
-Hopefully you can learn and even implement this project in your own.
+I also unit-tested the function that figures out the winner after spinning the lottery wheel since that is a vital part.
+
+Hopefully, you can learn and even implement this project on your own.
 
 Thank you for reading.
